@@ -1,11 +1,14 @@
 from pyramid.view import view_config
 
+import simplejson as json
 
 def getLightState():
-    pass
+    with open('/home/ec2-user/lightstate', 'rb') as lights:
+        return json.load(lights)
 
-def writeLightState():
-    pass
+def writeLightState(state):
+    with open('/home/ec2-user/lightstate', 'rb') as lights:
+        return json.dump(lights, state)
 
 @view_config(route_name='home', renderer='templates/lights.jinja2')
 def my_view(request):
@@ -14,8 +17,16 @@ def my_view(request):
     if request.method == "POST":
         #handle light state
         state = getLightState()
-        return {"items": request.POST}
+
+        lights = request.POST
+        for light in lights.keys():
+            state[light] = lights[light]
+
+        #save state
+        writeLightState(state)
+
+        return {"state": state}
     else:
         # GET
         #return light state
-        return {}
+        return {'lights': getLightState()}
