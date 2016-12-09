@@ -18,6 +18,7 @@ def my_view(request):
         #handle light state
         state = getLightState()
 
+        print request.POST
         lights = request.POST
         for light in lights.keys():
             state[light] = lights[light]
