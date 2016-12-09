@@ -1,6 +1,20 @@
 from pyramid.view import view_config
 
 
+def getLightState():
+    pass
+
+def writeLightState():
+    pass
+
 @view_config(route_name='home', renderer='templates/lights.jinja2')
 def my_view(request):
-    return {'POST': request.POST.items()}
+
+    #handle light state
+    if request.method == "POST":
+        #handle light state
+        state = getLightState()
+        return {}
+    else #GET
+        #return light state
+        return {type(request.POST.items())}
