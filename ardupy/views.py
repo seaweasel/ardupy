@@ -14,7 +14,7 @@ def my_view(request):
     if request.method == "POST":
         #handle light state
         state = getLightState()
-        return {"types": type(request.POST.items())}
+        return {"items": request.POST}
     else:
         # GET
         #return light state
