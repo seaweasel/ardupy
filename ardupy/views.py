@@ -15,7 +15,7 @@ def my_view(request):
         #handle light state
         state = getLightState()
         return {}
-    else
+    else:
         # GET
         #return light state
         return {type(request.POST.items())}
