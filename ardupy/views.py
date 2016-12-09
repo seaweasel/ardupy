@@ -7,7 +7,7 @@ def getLightState():
         return json.load(lights)
 
 def writeLightState(state):
-    with open('/home/ec2-user/lightstate', 'rb') as lights:
+    with open('/home/ec2-user/lightstate', 'wb') as lights:
         return json.dump(state, lights)
 
 @view_config(route_name='home', renderer='templates/lights.jinja2')
