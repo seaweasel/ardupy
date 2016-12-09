@@ -26,7 +26,7 @@ def my_view(request):
         # #save state
         # writeLightState(state)
 
-        return {"state": state}
+        return {"lights": state}
     else:
         # GET
         #return light state
