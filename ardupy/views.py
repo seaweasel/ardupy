@@ -19,12 +19,12 @@ def my_view(request):
         state = getLightState()
 
         print request.POST
-        lights = request.POST
-        for light in lights.keys():
-            state[light] = lights[light]
-
-        #save state
-        writeLightState(state)
+        # lights = request.POST
+        # for light in lights.keys():
+        #     state[light] = lights[light]
+        #
+        # #save state
+        # writeLightState(state)
 
         return {"state": state}
     else:
